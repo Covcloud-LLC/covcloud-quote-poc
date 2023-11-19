@@ -7,5 +7,4 @@ Note:  The quote manager is currently using an in-memory store.  Restarting the 
 ```bash
 docker-compose up
 ```
-
-# Connect to the REST API on port 9090
+Connect to the REST API on port 9080
