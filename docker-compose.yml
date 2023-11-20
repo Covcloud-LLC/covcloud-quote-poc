@@ -4,6 +4,27 @@ services:
   quotemanager:
     image: covcloud/quotemanager
     ports:
-      - 9080:9080
+      - 9090:9090
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/test
+    networks:
+      - quotemanager-network
 
+  mongo:
+    image: mongo
+    restart: always
+    ports:
+      - 27017:27017
+    networks:
+      - quotemanager-network
 
+  mongo-express:
+    image: mongo-express
+    restart: always
+    ports:
+      - 8081:8081
+    environment:
+      ME_CONFIG_MONGODB_URL: mongodb://mongo:27017/
+
+networks:
+  quotemanager-network:
