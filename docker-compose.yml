@@ -25,6 +25,8 @@ services:
       - 8081:8081
     environment:
       ME_CONFIG_MONGODB_URL: mongodb://mongo:27017/
+    networks:
+      - quotemanager-network
 
 networks:
   quotemanager-network:
