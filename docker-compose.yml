@@ -1,32 +1,91 @@
 version: '3.8'
 services:
 
-  quotemanager:
-    image: covcloud/quotemanager
-    ports:
-      - 9090:9090
-    environment:
-      - MONGO_URI=mongodb://mongo:27017/test
-    networks:
-      - quotemanager-network
-
   mongo:
     image: mongo
     restart: always
     ports:
-      - 27017:27017
-    networks:
-      - quotemanager-network
+      - 29000:27017
 
   mongo-express:
     image: mongo-express
     restart: always
     ports:
-      - 8081:8081
+      - 29001:8081
     environment:
       ME_CONFIG_MONGODB_URL: mongodb://mongo:27017/
-    networks:
-      - quotemanager-network
 
-networks:
-  quotemanager-network:
+  zookeeper:
+    image: confluentinc/cp-zookeeper:latest
+    container_name: zookeeper
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    ports:
+      - "2181:2181"
+
+  schema-registry:
+    image: confluentinc/cp-schema-registry:latest
+    hostname: schema-registry
+    depends_on:
+      - kafka-broker-1
+    ports:
+      - "8081:8081"
+    environment:
+      SCHEMA_REGISTRY_HOST_NAME: schema-registry
+      SCHEMA_REGISTRY_KAFKASTORE_CONNECTION_URL: 'zookeeper:2181'
+      SCHEMA_REGISTRY_LISTENERS: http://schema-registry:8081
+      SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS: PLAINTEXT://kafka-broker-1:9092,PLAINTEXT_INTERNAL://localhost:19092
+      SCHEMA_REGISTRY_DEBUG: 'true'
+
+  kafka-broker-1:
+    image: confluentinc/cp-kafka:latest
+    hostname: kafka-broker-1
+    ports:
+      - "19092:19092"
+    depends_on:
+      - zookeeper
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: 'zookeeper:2181'
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_INTERNAL:PLAINTEXT
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka-broker-1:9092,PLAINTEXT_INTERNAL://localhost:19092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+
+  quoteprocess:
+    image: covcloud/quoteprocess
+    depends_on:
+      - kafka-broker-1
+      - schema-registry
+    ports:
+      - "9091:9091"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - KAFKA_BOOTSTRAP_SERVERS=kafka-broker-1:9092
+      - SCHEMA_REGISTRY_URL=http://schema-registry:8081
+
+  quotedetails:
+    image: covcloud/quotedetails
+    depends_on:
+      - kafka-broker-1
+      - schema-registry
+    ports:
+      - "9092:9092"
+    environment:
+      - MONGO_DB_URI=mongodb://mongo:27017/quotedetails
+      - SPRING_PROFILES_ACTIVE=docker
+      - KAFKA_BOOTSTRAP_SERVERS=kafka-broker-1:9092
+      - SCHEMA_REGISTRY_URL=http://schema-registry:8081
+
+  quotemanager:
+    image: covcloud/quotemanager
+    depends_on:
+      - kafka-broker-1
+      - schema-registry
+    ports:
+      - "9090:9090"
+    environment:
+      - MONGO_DB_URI=mongodb://mongo:27017/quotemanager
+      - SPRING_PROFILES_ACTIVE=docker
+      - KAFKA_BOOTSTRAP_SERVERS=kafka-broker-1:9092
+      - SCHEMA_REGISTRY_URL=http://schema-registry:8081
