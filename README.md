@@ -9,7 +9,7 @@ docker-compose up
 ```
 Connect to the REST API on port 9090
 
-## Link to the swagger documentation
+## Links to the OpenAPI documentation and Swagger UI
 http://localhost:9090/v3/api-docs
 http://localhost:9090/swagger-ui/index.html
 
