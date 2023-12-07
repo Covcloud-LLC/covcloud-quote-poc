@@ -17,3 +17,10 @@ http://localhost:29001
 Username: admin
 Password: pass
 
+## Script to clean and restart docker containers (clears ALL data)
+```bash
+docker-compose down
+docker rm -f $(docker ps -a -q)
+docker volume rm $(docker volume ls -q)
+docker-compose up
+```
