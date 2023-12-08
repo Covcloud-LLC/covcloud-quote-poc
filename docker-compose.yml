@@ -10,6 +10,8 @@ services:
   mongo-express:
     image: mongo-express
     restart: always
+    depends_on:
+      - mongo
     ports:
       - 29001:8081
     environment:
@@ -71,6 +73,7 @@ services:
     depends_on:
       - kafka-broker-1
       - schema-registry
+      - mongo
     ports:
       - "9092:9092"
     environment:
@@ -84,6 +87,7 @@ services:
     depends_on:
       - kafka-broker-1
       - schema-registry
+      - mongo
     ports:
       - "9090:9090"
     environment:
