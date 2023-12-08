@@ -27,5 +27,6 @@ docker-compose up
 
 ## Script to delete all docker images.  Warning: This will delete ALL docker images on your machine
 ```bash
+docker-compose down
 docker rmi $(docker images -a -q)
 ```
