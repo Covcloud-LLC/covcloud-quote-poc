@@ -22,6 +22,10 @@ Password: pass
 docker-compose down
 docker rm -f $(docker ps -a -q)
 docker volume rm $(docker volume ls -q)
-docker rmi $(docker images -a -q)
 docker-compose up
+```
+
+## Script to delete all docker images.  Warning: This will delete ALL docker images on your machine
+```bash
+docker rmi $(docker images -a -q)
 ```
