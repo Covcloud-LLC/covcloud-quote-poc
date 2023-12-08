@@ -20,6 +20,9 @@ services:
     environment:
       ZOOKEEPER_CLIENT_PORT: 2181
       ZOOKEEPER_TICK_TIME: 2000
+    volumes:
+      - zookeeper_data:/data  # Mounts the volume for Zookeeper data
+      - zookeeper_datalog:/datalog  # Mounts the volume for Zookeeper's transaction log
     ports:
       - "2181:2181"
 
@@ -88,3 +91,12 @@ services:
       - SPRING_PROFILES_ACTIVE=docker
       - KAFKA_BOOTSTRAP_SERVERS=kafka-broker-1:9092
       - SCHEMA_REGISTRY_URL=http://schema-registry:8081
+
+  excess-rater:
+    image: covcloud/xs-rater:latest
+    ports:
+      - "4000:5000"
+
+volumes:
+  zookeeper_data:  # Defines the volume for Zookeeper data
+  zookeeper_datalog:  # Defines the volume for Zookeeper's transaction log
