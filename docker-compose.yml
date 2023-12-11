@@ -4,6 +4,8 @@ services:
   mongo:
     image: mongo
     restart: always
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
     ports:
       - 29000:27017
 
@@ -57,7 +59,7 @@ services:
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
 
   quoteprocess:
-    image: covcloud/quoteprocess:0.0.1-SNAPSHOT
+    image: covcloud/quoteprocess:latest
     depends_on:
       - kafka-broker-1
       - schema-registry
@@ -69,7 +71,7 @@ services:
       - SCHEMA_REGISTRY_URL=http://schema-registry:8081
 
   quotedetails:
-    image: covcloud/quotedetails:0.0.1-SNAPSHOT
+    image: covcloud/quotedetails:latest
     depends_on:
       - kafka-broker-1
       - schema-registry
@@ -83,7 +85,7 @@ services:
       - SCHEMA_REGISTRY_URL=http://schema-registry:8081
 
   quotemanager:
-    image: covcloud/quotemanager:0.0.1-SNAPSHOT
+    image: covcloud/quotemanager:latest
     depends_on:
       - kafka-broker-1
       - schema-registry
