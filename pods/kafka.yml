@@ -21,6 +21,8 @@ spec:
           value: "PLAINTEXT_INTERNAL://kafka-service:9092,PLAINTEXT_EXTERNAL://localhost:30092"
         - name: KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR
           value: "1"
+        - name: KAFKA_LOG_DIRS
+          value: "/var/lib/kafka/data/kafka-logs"
       volumeMounts:
         - name: kafka-storage
           mountPath: /var/lib/kafka/data
