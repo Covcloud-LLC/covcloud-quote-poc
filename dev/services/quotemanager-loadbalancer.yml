@@ -8,6 +8,5 @@ spec:
     app: quotemanager
   ports:
     - protocol: TCP
-      port: 9090
+      port: 9890
       targetPort: 9090
-      nodePort: 30190
