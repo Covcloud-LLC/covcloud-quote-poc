@@ -20,6 +20,9 @@ spec:
           image: confluentinc/cp-kafka:latest  # Consider specifying a specific version
           ports:
             - containerPort: 9092
+          securityContext:
+            runAsUser: 0
+            runAsGroup: 0
           env:
             - name: KAFKA_BROKER_ID
               value: "1"
