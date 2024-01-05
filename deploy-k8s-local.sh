@@ -1,8 +1,7 @@
-kubectl apply -f volumes/kafka-pvc.yml
-kubectl apply -f volumes/mongo-pvc.yml
+kubectl apply -f volumes/shared-pvc.yml
+sleep 5
 kubectl apply -f deployments/mockrater-deployment.yml
 kubectl apply -f services/mockrater-nodeport.yml
-sleep 5
 kubectl apply -f deployments/mongo-deployment.yml
 kubectl apply -f services/mongo-service.yml
 sleep 5
