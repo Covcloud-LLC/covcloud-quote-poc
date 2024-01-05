@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mockrater-service
+spec:
+  type: ClusterIP
+  selector:
+    app: mockrater
+  ports:
+    - protocol: TCP
+      port: 9891
+      targetPort: 8080

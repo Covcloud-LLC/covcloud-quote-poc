@@ -1,6 +1,7 @@
 kubectl apply -f volumes/kafka-pvc.yml
 kubectl apply -f volumes/mongo-pvc.yml
 kubectl apply -f services/mockrater-loadbalancer.yml
+kubectl apply -f services/mockrater-service.yml
 kubectl apply -f deployments/mockrater-deployment.yml
 kubectl apply -f services/mongo-service.yml
 kubectl apply -f deployments/mongo-deployment.yml

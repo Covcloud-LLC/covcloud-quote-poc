@@ -27,4 +27,6 @@ spec:
               value: "http://schema-registry-service:8081"
             - name: MONGO_DB_URI
               value: "mongodb://mongo-service:27017/quoterater"
+            - name: EXCESS_RATER_URL
+              value: "http://mockrater-service:9093"
 

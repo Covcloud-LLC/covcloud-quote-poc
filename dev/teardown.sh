@@ -14,6 +14,8 @@ kubectl delete deployments mockrater-deployment
 sleep 1
 kubectl delete service mockrater-loadbalancer
 sleep 1
+kubectl delete service mockrater-service
+sleep 1
 kubectl delete service mongo-service
 sleep 1
 kubectl delete service mongo-express-loadbalancer
