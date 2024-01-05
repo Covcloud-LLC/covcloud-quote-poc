@@ -29,4 +29,16 @@ spec:
               value: "kafka-service:9092"
             - name: SCHEMA_REGISTRY_URL
               value: "http://schema-registry-service:8081"
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 9090
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 9090
+            initialDelaySeconds: 15
+            periodSeconds: 20
 
