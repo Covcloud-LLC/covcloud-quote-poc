@@ -4,7 +4,7 @@ metadata:
   name: schema-registry-service
 spec:
   selector:
-    app: kafka
+    app: schema-registry
   ports:
     - protocol: TCP
       port: 8081

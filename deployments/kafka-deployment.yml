@@ -26,9 +26,9 @@ spec:
             - name: KAFKA_ZOOKEEPER_CONNECT
               value: "zookeeper-service:2181"
             - name: KAFKA_LISTENER_SECURITY_PROTOCOL_MAP
-              value: "PLAINTEXT_INTERNAL:PLAINTEXT,PLAINTEXT_EXTERNAL:PLAINTEXT"
+              value: "PLAINTEXT:PLAINTEXT,PLAINTEXT_EXTERNAL:PLAINTEXT"
             - name: KAFKA_ADVERTISED_LISTENERS
-              value: "PLAINTEXT_INTERNAL://kafka-service:9092,PLAINTEXT_EXTERNAL://localhost:30092"
+              value: "PLAINTEXT://kafka-service:9092,PLAINTEXT_EXTERNAL://localhost:30092"
             - name: KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR
               value: "1"
           volumeMounts:

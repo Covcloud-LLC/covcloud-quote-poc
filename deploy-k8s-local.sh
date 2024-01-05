@@ -3,20 +3,23 @@ kubectl apply -f volumes/mongo-pvc.yml
 kubectl apply -f deployments/mockrater-deployment.yml
 kubectl apply -f services/mockrater-nodeport.yml
 sleep 5
-kubectl apply -f pods/mongo.yml
+kubectl apply -f deployments/mongo-deployment.yml
 kubectl apply -f services/mongo-service.yml
-kubectl apply -f services/mongo-nodeport.yml
 sleep 5
-kubectl apply -f pods/mongo-express.yml
+kubectl apply -f deployments/mongo-express-deployment.yml
 kubectl apply -f services/mongo-express-nodeport.yml
 sleep 5
 kubectl apply -f services/zookeeper-service.yml
-kubectl apply -f pods/zookeeper.yml
+kubectl apply -f deployments/zookeeper-deployment.yml
 sleep 5
 kubectl apply -f services/kafka-service.yml
-kubectl apply -f pods/kafka.yml
-kubectl apply -f services/kafka-nodeport.yml
+kubectl apply -f deployments/kafka-deployment.yml
 sleep 5
-kubectl apply -f pods/schema-registry.yml
+kubectl apply -f deployments/schema-registry-deployment.yml
 kubectl apply -f services/schema-registry-service.yml
-kubectl apply -f services/schema-registry-nodeport.yml
+sleep 5
+kubectl apply -f deployments/quoterater-deployment.yml
+kubectl apply -f deployments/quoteprocess-deployment.yml
+kubectl apply -f deployments/quotedetails-deployment.yml
+kubectl apply -f deployments/quotemanager-deployment.yml
+kubectl apply -f services/quotemanager-nodeport.yml

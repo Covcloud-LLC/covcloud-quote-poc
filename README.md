@@ -1,15 +1,6 @@
 # covcloud-quote-poc
 Covcloud Quote POC
 
-
-## Kubernetes
-
-### To load the pod into the cluster
-```bash
-kubectl apply -f deployments/mockrater-deployment.yml
-kubectl apply -f services/mockrater-nodeport.yml
-```
-
 ## Docker
 
 ### Run the application using docker-compose

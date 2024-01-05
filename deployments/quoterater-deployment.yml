@@ -25,4 +25,6 @@ spec:
               value: "kafka-service:9092"
             - name: SCHEMA_REGISTRY_URL
               value: "http://schema-registry-service:8081"
+            - name: MONGO_DB_URI
+              value: "mongodb://mongo-service:27017/quoterater"
 
