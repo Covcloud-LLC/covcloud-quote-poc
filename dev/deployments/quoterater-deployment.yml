@@ -28,5 +28,5 @@ spec:
             - name: MONGO_DB_URI
               value: "mongodb://mongo-service:27017/quoterater"
             - name: EXCESS_RATER_URL
-              value: "http://mockrater-service:9093"
+              value: "http://mockrater-service:8080"
 

@@ -8,5 +8,5 @@ spec:
     app: mockrater
   ports:
     - protocol: TCP
-      port: 9891
+      port: 8080
       targetPort: 8080
