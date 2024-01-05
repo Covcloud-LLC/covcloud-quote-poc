@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: quotedetails-deployment
+  labels:
+    app: quotedetails
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: quotedetails
+  template:
+    metadata:
+      name: quotedetails-pod
+      labels:
+        app: quotedetails
+    spec:
+      containers:
+        - name: quotedetails
+          image: covcloud/quotedetails:latest
+          env:
+            - name: MONGO_DB_URI
+              value: "mongodb://mongo-service:27017/quotedetails"
+            - name: SPRING_PROFILES_ACTIVE
+              value: "docker"
+            - name: KAFKA_BOOTSTRAP_SERVERS
+              value: "kafka-service:9092"
+            - name: SCHEMA_REGISTRY_URL
+              value: "http://schema-registry-service:8081"
+

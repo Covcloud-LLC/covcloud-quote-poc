@@ -7,7 +7,7 @@ services:
     healthcheck:
       test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
     ports:
-      - 29000:27017
+      - "29000:27017"
 
   mongo-express:
     image: mongo-express
@@ -15,7 +15,7 @@ services:
     depends_on:
       - mongo
     ports:
-      - 29001:8081
+      - "29001:8081"
     environment:
       ME_CONFIG_MONGODB_URL: mongodb://mongo:27017/
 

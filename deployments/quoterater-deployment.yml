@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: quoterater-deployment
+  labels:
+    app: quoterater
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: quoterater
+  template:
+    metadata:
+      name: quoterater-pod
+      labels:
+        app: quoterater
+    spec:
+      containers:
+        - name: quoterater
+          image: covcloud/quoterater:latest
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: "docker"
+            - name: KAFKA_BOOTSTRAP_SERVERS
+              value: "kafka-service:9092"
+            - name: SCHEMA_REGISTRY_URL
+              value: "http://schema-registry-service:8081"
+

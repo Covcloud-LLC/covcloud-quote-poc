@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mockrater-deployment
+  labels:
+    app: mockrater
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mockrater
+  template:
+    metadata:
+      name: mockrater-pod
+      labels:
+        app: mockrater
+    spec:
+      containers:
+        - name: mockrater
+          image: covcloud/mock-rater:latest
+          ports:
+            - containerPort: 8080
+

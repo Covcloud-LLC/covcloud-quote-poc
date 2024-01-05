@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mockrater-pod
+  labels:
+    app: mockrater
+    type: back-end
+spec:
+  containers:
+    - name: mockrater
+      image: covcloud/mock-rater:latest
+      ports:
+        - containerPort: 8080
