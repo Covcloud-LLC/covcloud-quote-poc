@@ -27,4 +27,4 @@ spec:
   volumes:
     - name: kafka-storage
       persistentVolumeClaim:
-        claimName: kafka-pvc
+        claimName: shared-pvc

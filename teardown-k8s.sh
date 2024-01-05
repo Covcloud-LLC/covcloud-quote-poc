@@ -27,3 +27,9 @@ sleep 1
 kubectl delete pvc kafka-pvc
 sleep 1
 kubectl delete pvc mongo-pvc
+sleep 1
+kubectl delete deployments quoterater-deployment
+kubectl delete deployments quoteprocess-deployment
+kubectl delete deployments/quotedetails-deployment
+kubectl delete deployments/quotemanager-deployment
+kubectl delete services quotemanager-nodeport
