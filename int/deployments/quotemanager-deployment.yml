@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: quotemanager-deployment
+  labels:
+    app: quotemanager
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: quotemanager
+  template:
+    metadata:
+      name: quotemanager-pod
+      labels:
+        app: quotemanager
+    spec:
+      containers:
+        - name: quotemanager
+          image: covcloud/quotemanager:latest
+          ports:
+            - containerPort: 9090
+          env:
+            - name: MONGO_DB_URI
+              value: "mongodb://mongo-service:27017/quotemanager"
+            - name: SPRING_PROFILES_ACTIVE
+              value: "docker"
+            - name: KAFKA_BOOTSTRAP_SERVERS
+              value: "kafka-service:9092"
+            - name: SCHEMA_REGISTRY_URL
+              value: "http://schema-registry-service:8081"
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 9090
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 9090
+            initialDelaySeconds: 15
+            periodSeconds: 20
+
