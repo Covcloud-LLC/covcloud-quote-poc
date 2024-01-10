@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: mockrater-loadbalancer
+  name: esrater-svc
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   selector:
-    app: mockrater
+    app: esrater
   ports:
     - protocol: TCP
-      port: 9891
+      port: 8080
       targetPort: 8080

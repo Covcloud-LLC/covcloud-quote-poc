@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mockrater-deployment
+  name: esrater-dp
   labels:
-    app: mockrater
+    app: esrater
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: mockrater
+      app: esrater
   template:
     metadata:
-      name: mockrater-pod
+      name: esrater-pod
       labels:
-        app: mockrater
+        app: esrater
     spec:
       containers:
-        - name: mockrater
-          image: covcloud/mock-rater:latest
+        - name: esrater
+          image: covcloud/esrater:0.0.3-SNAPSHOT
           ports:
             - containerPort: 8080
 
