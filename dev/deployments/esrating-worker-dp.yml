@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: esrating-worker-dp
+  labels:
+    app: esrating-worker
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: esrating-worker
+  template:
+    metadata:
+      name: esrating-worker-pod
+      labels:
+        app: esrating-worker
+    spec:
+      containers:
+        - name: esrating-worker
+          image: covcloud/esrating-worker:latest
+          ports:
+            - containerPort: 9097
+          env:
+            - name: MONGO_URI
+              value: "mongodb://mongo-service:27017/esratingworker"
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 9097
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 9097
+            initialDelaySeconds: 15
+            periodSeconds: 20
