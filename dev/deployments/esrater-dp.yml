@@ -18,6 +18,7 @@ spec:
       containers:
         - name: esrater
           image: covcloud/esrater:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 8080
 

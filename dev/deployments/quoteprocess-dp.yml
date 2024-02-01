@@ -18,6 +18,7 @@ spec:
       containers:
         - name: quoteprocess
           image: covcloud/quote-process:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 9093
           env:

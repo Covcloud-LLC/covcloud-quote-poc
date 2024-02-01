@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: esrater-lb
+  name: quoteprocess-ingress
 spec:
   type: LoadBalancer
   selector:
-    app: esrater
+    app: quoteprocess
   ports:
     - protocol: TCP
-      port: 9891
-      targetPort: 8080
+      port: 9893
+      targetPort: 9093

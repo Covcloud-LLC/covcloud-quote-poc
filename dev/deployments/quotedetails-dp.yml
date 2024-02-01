@@ -18,6 +18,7 @@ spec:
       containers:
         - name: quotedetails
           image: covcloud/quote-details:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 9097
           env:

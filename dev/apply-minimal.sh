@@ -5,13 +5,9 @@ kubectl apply -f deployments/redis-dp.yml
 kubectl apply -f services/redis-svc.yml
 kubectl apply -f deployments/esrater-dp.yml
 kubectl apply -f services/esrater-svc.yml
-kubectl apply -f services/esrater-ingress.yml
 kubectl apply -f deployments/esrating-worker-dp.yml
 kubectl apply -f services/esrating-worker-svc.yml
-kubectl apply -f services/esrating-worker-ingress.yml
 kubectl apply -f deployments/quotedetails-dp.yml
-kubectl apply -f services/quotedetails-ingress.yml
 kubectl apply -f deployments/quoteprocess-dp.yml
-kubectl apply -f services/quoteprocess-ingress.yml
 kubectl apply -f deployments/quotemanager-dp.yml
 kubectl apply -f services/quotemanager-ingress.yml

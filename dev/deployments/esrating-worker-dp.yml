@@ -18,6 +18,7 @@ spec:
       containers:
         - name: esrating-worker
           image: covcloud/esrating-worker:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 9097
           env:
