@@ -24,7 +24,7 @@ spec:
             - name: ME_CONFIG_MONGODB_URL
               value: "mongodb://mongo:27017/"
             - name: ME_CONFIG_MONGODB_SERVER
-              value: mongo-service # Assuming the MongoDB service is named 'mongo-service'
+              value: mongo-svc
             - name: ME_CONFIG_MONGODB_PORT
               value: "27017"
             - name: ME_CONFIG_MONGODB_ENABLE_ADMIN

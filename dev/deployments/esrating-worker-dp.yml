@@ -23,9 +23,9 @@ spec:
             - containerPort: 9097
           env:
             - name: MONGO_URI
-              value: "mongodb://mongo-service:27017/esratingworker"
+              value: "mongodb://mongo-svc:27017/esratingworker"
             - name: REDIS_HOST
-              value: "redis"
+              value: "redis-svc"
             - name: REDIS_PORT
               value: "6379"
           readinessProbe:

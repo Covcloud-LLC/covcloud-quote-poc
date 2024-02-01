@@ -25,9 +25,9 @@ spec:
             - name: ENV
               value: "dev"
             - name: MONGO_URI
-              value: "mongodb://mongo-service:27017/quotedetails"
+              value: "mongodb://mongo-svc:27017/quotedetails"
             - name: REDIS_HOST
-              value: "redis"
+              value: "redis-svc"
             - name: REDIS_PORT
               value: "6379"
 

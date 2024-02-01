@@ -1,13 +1,13 @@
-kubectl delete volumes/mongo-pvc
-kubectl delete deployments/mongo-dp
-kubectl delete services/mongo-svc
-kubectl delete deployments/redis-dp
-kubectl delete services/redis-svc
-kubectl delete deployments/esrater-dp
-kubectl delete services/esrater-svc
-kubectl delete deployments/esrating-worker-dp
-kubectl delete services/esrating-worker-svc
-kubectl delete deployments/quotedetails-dp
-kubectl delete deployments/quoteprocess-dp
-kubectl delete deployments/quotemanager-dp
-kubectl delete services/quotemanager-ingress
+kubectl apply -f volumes/mongo-pvc.yml
+kubectl apply -f deployments/mongo-dp.yml
+kubectl apply -f services/mongo-svc.yml
+kubectl apply -f deployments/redis-dp.yml
+kubectl apply -f services/redis-svc.yml
+kubectl apply -f deployments/esrater-dp.yml
+kubectl apply -f services/esrater-svc.yml
+kubectl apply -f deployments/esrating-worker-dp.yml
+kubectl apply -f services/esrating-worker-svc.yml
+kubectl apply -f deployments/quotedetails-dp.yml
+kubectl apply -f deployments/quoteprocess-dp.yml
+kubectl apply -f deployments/quotemanager-dp.yml
+kubectl apply -f services/quotemanager-ingress.yml
