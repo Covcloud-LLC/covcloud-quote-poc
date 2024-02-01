@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: quoteprocess-deployment
+  labels:
+    app: quoteprocess
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: quoteprocess
+  template:
+    metadata:
+      name: quoteprocess-pod
+      labels:
+        app: quoteprocess
+    spec:
+      containers:
+        - name: quoteprocess
+          image: covcloud/quote-process:latest
+          ports:
+            - containerPort: 9093
+          env:
+            - name: ENV
+              value: "dev"
+            - name: MONGO_URI
+              value: "mongodb://mongo-service:27017/quoteprocess"
+            - name: REDIS_HOST
+              value: "redis"
+            - name: REDIS_PORT
+              value: "6379"
+
+

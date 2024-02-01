@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mongo-express-deployment
+  name: mongo-express-dp
   labels:
     app: mongo-express
 spec:

@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: esrating-worker-lb
+  name: esrating-worker-svc
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   selector:
     app: esrating-worker
   ports:
     - protocol: TCP
-      port: 9856
+      port: 9097
       targetPort: 9097

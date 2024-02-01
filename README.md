@@ -7,15 +7,15 @@ Covcloud Quote POC
 ```bash
 docker-compose up
 ```
-Connect to the REST API on port 9090
+Connect to the REST API on port 9891
 
 ###Links to the OpenAPI documentation and Swagger UI
-http://localhost:9090/v3/api-docs
-http://localhost:9090/swagger-ui/index.html
+http://localhost:9891/v3/api-docs
+http://localhost:9891/swagger-ui/index.html
 
 
 ### Mongo Express
-http://localhost:30081
+http://localhost:9881
 Username: admin
 Password: pass
 

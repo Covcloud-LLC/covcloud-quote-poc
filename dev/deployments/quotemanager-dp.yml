@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: quotemanager-deployment
+  name: quotemanager-dp
   labels:
     app: quotemanager
 spec:
@@ -17,18 +17,18 @@ spec:
     spec:
       containers:
         - name: quotemanager
-          image: covcloud/quotemanager:latest
+          image: covcloud/quote-manager:latest
           ports:
             - containerPort: 9090
           env:
-            - name: MONGO_DB_URI
-              value: "mongodb://mongo-service:27017/quotemanager"
-            - name: SPRING_PROFILES_ACTIVE
-              value: "docker"
-            - name: KAFKA_BOOTSTRAP_SERVERS
-              value: "kafka-service:9092"
-            - name: SCHEMA_REGISTRY_URL
-              value: "http://schema-registry-service:8081"
+            - name: ENV
+              value: "dev"
+            - name: MONGO_URI
+              value: "mongodb://mongo-service:27017/quoteprocess"
+            - name: REDIS_HOST
+              value: "redis"
+            - name: REDIS_PORT
+              value: "6379"
           readinessProbe:
             httpGet:
               path: /health

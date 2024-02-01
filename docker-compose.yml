@@ -75,7 +75,7 @@ services:
       - schema-registry
       - mongo
     environment:
-      - MONGO_DB_URI=mongodb://mongo:27017/quotedetails
+      - MONGO_URI=mongodb://mongo:27017/quotedetails
       - SPRING_PROFILES_ACTIVE=docker
       - KAFKA_BOOTSTRAP_SERVERS=kafka-broker-1:9092
       - SCHEMA_REGISTRY_URL=http://schema-registry:8081
