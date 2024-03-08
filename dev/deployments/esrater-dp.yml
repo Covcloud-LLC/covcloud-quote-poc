@@ -17,8 +17,16 @@ spec:
     spec:
       containers:
         - name: esrater
-          image: covcloud/esrater:latest
+          image: covcloud/es-reference-rater:latest
           imagePullPolicy: Always
           ports:
-            - containerPort: 8080
-
+            - containerPort: 9097
+          env:
+            - name: ENV
+              value: "dev"
+            - name: MONGO_URI
+              value: "mongodb://mongo-svc:27017/quotedetails"
+            - name: REDIS_HOST
+              value: "redis-svc"
+            - name: REDIS_PORT
+              value: "6379"

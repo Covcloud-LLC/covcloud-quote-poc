@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: quoteprocess-deployment
+  name: quoteprocess-dp
   labels:
     app: quoteprocess
 spec:

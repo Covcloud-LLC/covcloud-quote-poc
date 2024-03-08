@@ -20,7 +20,7 @@ spec:
           image: covcloud/quote-details:latest
           imagePullPolicy: Always
           ports:
-            - containerPort: 9097
+            - containerPort: 9098
           env:
             - name: ENV
               value: "dev"
